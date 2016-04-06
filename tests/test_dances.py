@@ -19,7 +19,7 @@ class TestDance(TestCase):
         assert dance._SIMILAR_DANCES == ("similar dance", "second dance")
 
     def test_string_method(self):
-        format_string = "%s dance\nHands is doing: %s\n Legs is doing: %s\n Head is doing: %s\n Body is doing: %s"
+        format_string = "{} dance\nHands is doing: {}\n Legs is doing: {}\n Head is doing: {}\n Body is doing: {}"
         dance = self.dance
         assert str(self.dance) == format_string.format(dance._NAME, dance._HANDS, dance._LEGS, dance._HEAD, dance._BODY)
 

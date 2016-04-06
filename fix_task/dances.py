@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from decorators import args_match_types
+from fix_task.decorators import args_match_types
 
 __author__ = 'litleleprikon'
 
@@ -31,14 +31,14 @@ class Dance:
         if body is not None:
             self._BODY = body
         if similar is not None:
-            self._SIMILAR_DANCES = similar
+            self._SIMILAR_DANCES = tuple([x.name if isinstance(x, Dance) else x for x in similar])
 
     @property
     def name(self):
         return self._NAME
 
     def __str__(self):
-        format_string = "%s dance\nHands is doing: %s\n Legs is doing: %s\n Head is doing: %s\n Body is doing: %s"
+        format_string = "{} dance\nHands is doing: {}\n Legs is doing: {}\n Head is doing: {}\n Body is doing: {}"
         return format_string.format(self._NAME, self._HANDS, self._LEGS, self._HEAD, self._BODY)
 
     def can_dance(self, dance):

@@ -18,5 +18,5 @@ def args_match_types(func):
                     arg_k,
                     func.__annotations__[arg_k]
                 )
-        func(*args, **kwargs)
+        return func(*args, **kwargs)
     return wrapper
