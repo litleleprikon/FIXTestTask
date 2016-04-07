@@ -16,7 +16,7 @@ class Human:
     _SEX = "Human"
 
     @args_match_types
-    def __init__(self, name: str="Vasya Pupkin", dances: tuple=None):
+    def __init__(self, name: str="Someone", dances: tuple=None):
         self._name = name
         self._dances = dances if dances is not None else tuple()
         self._set_state_bar()
@@ -28,8 +28,8 @@ class Human:
         self._state = "Go to bar"
 
     def __str__(self):
-        format_string = "{} {}, can dance: {}"
-        return format_string.format(self._SEX, self._name, ', '.join(x.name for x in self._dances))
+        format_string = "{} {}, status: {}, can dance: {}"
+        return format_string.format(self._SEX, self._name, self._state, ', '.join(x.name for x in self._dances))
 
     @property
     def name(self):
@@ -43,7 +43,7 @@ class Human:
 
     def can_dance(self, song: Song):
         for i in self._dances:
-            if i.can_dance(song.genre):
+            if i.can_dance(dance=song.genre):
                 return True
         return False
 

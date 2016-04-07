@@ -27,13 +27,16 @@ class TestHuman(TestCase):
         assert self.human.state == "Go to bar"
 
     def test_str_method(self):
-        format_string = "Human {}, can dance: {}"
-        assert str(self.human) == format_string.format(self.human.name, ', '.join(x.name for x in self.human._dances))
+        format_string = "Human {}, status: {}, can dance: {}"
+        assert str(self.human) == format_string.format(self.human.name, self.human.state,
+                                                       ', '.join(x.name for x in self.human._dances))
 
     def test_boy_str_method(self):
         boy = Boy()
-        assert str(boy) == "Boy {}, can dance: {}".format(boy.name, ', '.join(x.name for x in boy._dances))
+        assert str(boy) == "Boy {}, status: {}, can dance: {}".format(boy.name, boy.state,
+                                                                      ', '.join(x.name for x in boy._dances))
 
     def test_girl_str_method(self):
         girl = Girl()
-        assert str(girl) == "Girl {}, can dance: {}".format(girl.name, ', '.join(x.name for x in girl._dances))
+        assert str(girl) == "Girl {}, status: {}, can dance: {}".format(girl.name, girl.state,
+                                                                        ', '.join(x.name for x in girl._dances))
